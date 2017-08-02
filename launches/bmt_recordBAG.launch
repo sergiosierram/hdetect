@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="rosbag" type="record" name="record" output="screen" 
+	args="-o $(find hdetect)/bag/ 
+	/pioneer_lx/RosAria/parameter_updates
+	/pioneer_lx/RosAria/S3Series_1_laserscan
+        /pioneer_lx/usb_cam/camera_info
+        /pioneer_lx/usb_cam/image_raw
+	
+	" 
+	required="true">
+	</node> 
+</launch>

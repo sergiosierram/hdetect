@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<launch>
+	<!--param name="use_sim_time" value="false" /-->
+	<arg name="robot_id" default="pioneer"/>
+
+        <!-- laser shadow filtering file -->
+        <rosparam command="load" file="$(find hdetect)/yaml/laser_filter.yaml"/>
+
+	<node pkg="tf" type="static_transform_publisher" name="sick_camera_broadcaster"
+    	  args="0.05 0 0.22 1.62 3.141592 1.57 $(arg robot_id)/laser_frame $(arg robot_id)/camera_frame 100" />
+
+	<node pkg="hdetect" type="recognizeRT" name="recognizeRT" output="screen" cwd="node"
+              args="/pioneer_lx/usb_cam/image_raw /pioneer_lx/RosAria/S3Series_1_laserscan" >
+
+             <param name="/camera_yaml" value="$(find hdetect)/yaml/head_camera.yaml"/>
+	     <param name="/camera_name" value="lifecam"/>
+             <param name="/boost_xml" value="$(find hdetect)/data/trained_boost.xml"/>
+             <param name="odom_topic" value="/odom"/>
+             <param name="odom_ekf_topic" value="/ekf_pose/odom_combined"/>
+             <param name="amcl_topic" value="/amcl_pose"/>
+             <param name="use_amcl" value="false"/>
+             <rosparam command="load" file="$(find hdetect)/yaml/detector.yaml"/>
+        </node>
+
+</launch> 

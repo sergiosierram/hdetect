@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="robot_id" default="pioneer"/>	
+	
+	<param name="use_sim_time" value="false" />
+	<param name="pkg_path" value="$(find hdetect)"/>
+
+	<!-- laser shadow filtering file -->
+	<rosparam command="load" file="$(find hdetect)/yaml/laser_filter.yaml"/>
+
+	<node pkg="tf" type="static_transform_publisher" name="sick_camera_broadcaster"
+    	  args="0.05 0 0.22 1.62 3.141592 1.57 $(arg robot_id)/laser_frame $(arg robot_id)/camera_frame 100" />
+
+	<node pkg="hdetect" type="annotateData" name="annotator" output="screen" 
+		args="/$(find hdetect)/bag/bag2.bag /pioneer_lx/usb_cam/image_raw /pioneer_lx/RosAria/S3Series_1_laserscan" >
+		<param name="/camera_yaml" value="$(find hdetect)/yaml/head_camera.yaml"/>
+		<param name="/camera_name" value="lifecam"/>
+		<param name="/boost_xml" value="$(find hdetect)/data/trained_boost.xml"/>
+		<rosparam command="load" file="$(find hdetect)/yaml/detector.yaml"/>
+	</node>
+
+</launch>
