@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <launch>
 	<param name="use_sim_time" value="false" />
         <!-- laser shadow filtering file -->
@@ -29,7 +28,7 @@
 			    3.12148546397231552163 -0.01876295705026196844 0.10236192367415890281
 	 		    /laser_top /camera 20" />
 
-	<node pkg="hdetect" type="visualizeRT" name="visualizeRT" output="screen" cwd="node"
+	<node pkg="hdetect" type="headlessRT" name="headlessRT" output="screen" cwd="node"
 		  args="/camera/image_raw /iri_hokuyo_laser/scan">
 
 		<param name="/camera_yaml" value="$(find hdetect)/yaml/camera_calib.yaml"/>
