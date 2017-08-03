@@ -12,7 +12,7 @@
     	  args="0.05 0 0.22 1.62 3.141592 1.57 $(arg robot_id)/laser_frame $(arg robot_id)/camera_frame 100" />
 
 	<node pkg="hdetect" type="annotateData" name="annotator" output="screen" 
-		args="/$(find hdetect)/bag/bag2.bag /pioneer_lx/usb_cam/image_raw /pioneer_lx/RosAria/S3Series_1_laserscan" >
+		args="/$(find hdetect)/bag/bag3.bag /pioneer_lx/usb_cam/image_raw /pioneer_lx/RosAria/S3Series_1_laserscan" >
 		<param name="/camera_yaml" value="$(find hdetect)/yaml/head_camera.yaml"/>
 		<param name="/camera_name" value="lifecam"/>
 		<param name="/boost_xml" value="$(find hdetect)/data/trained_boost.xml"/>

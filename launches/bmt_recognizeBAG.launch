@@ -24,7 +24,7 @@
         </node>
 
 	<node pkg="rosbag" type="play" name="play" output="screen" 
-                  args=" $(find hdetect)/bag/bag2.bag --pause --clock --loop "/>
+                  args=" $(find hdetect)/bag/bag3.bag --pause --clock --loop "/>
 
 	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find hdetect)/rviz/hdetect2.rviz"/>
 

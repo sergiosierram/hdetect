@@ -7,7 +7,6 @@
 	/pioneer_lx/RosAria/S3Series_1_laserscan
         /pioneer_lx/usb_cam/camera_info
         /pioneer_lx/usb_cam/image_raw
-	
 	" 
 	required="true">
 	</node> 
